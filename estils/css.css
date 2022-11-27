@@ -1,0 +1,218 @@
+/* MENU NAVEGACIÓ */
+
+header nav, #formularis {
+    background-color: #F8F5E2;
+}
+
+header nav div#navbarNav ul#menu_principal li:hover {
+    color: #AA7730;
+}
+
+header nav a#ailled {
+    font-size: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#ailled {
+    color: #AA7730;
+}
+
+/* PÀGINES */
+
+main div#carruselImatges img {
+    height: 575px;
+}
+
+main section {
+    padding: 3% 0;
+}
+
+a.boto_marro,
+input.boto_marro {
+    background-color: #AA7730;
+    color: white;
+}
+
+a.boto_marro:hover,
+input.boto_marro:hover {
+    background-color: #F8F5E2;
+    color: black;
+}
+
+main section div#caselles_activitats {
+    padding: 2% 0;
+}
+
+main section#newsletter {
+  background-color: #dbbba6;
+}
+
+main section#newsletter form {
+    padding: 2% 0;
+}
+
+main section#quisom article {
+    padding: 2% 0;
+}
+
+main section#quisom div#imatges img {
+    height: 285px;
+}
+
+span#max_paraules {
+    font-size: 12px;
+}
+
+main section#meu_perfil div#info_perfil img {
+    border-radius: 150px;
+    height: 230px;
+    width: 230px;
+    display: block;
+    margin: 1% auto;
+}
+
+main section#contacte iframe {
+    width: 450px;
+    height: 250px;
+    border: 0;
+}
+
+main section#confirm_registre {
+    padding: 5% 10%;
+}
+
+main section div#confirmacio {
+    padding: 10% 0;
+    background-color: #dbbba6;
+    text-align: center;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #F8F5E2;
+    padding: 4% 0;
+}
+
+footer h6 {
+    color: #AA7730;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 700px) {
+    main div#carruselImatges img {
+        height: 500px;
+    }
+
+    main formulari_inici_sessio h3 {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+    main div#carruselImatges img {
+        height: 450px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    main section#contacte iframe {
+        width: 400px;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    main div#carruselImatges img {
+        height: 400px;
+    }
+
+    main section#meu_perfil div#info_perfil img {
+        height: 200px;
+        width: 200px;
+    }
+
+    main section#contacte iframe {
+        width: 350px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    main section#contacte iframe {
+        width: 300px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    main div#carruselImatges img {
+        height: 350px;
+    }
+
+    main section#meu_perfil div#info_perfil img {
+        height: 180px;
+        width: 180px;
+    }
+
+    main section#contacte iframe {
+        width: 280px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    main div#carruselImatges img {
+        height: 300px;
+    }
+
+    main section#contacte iframe {
+        width: 250px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 275px) {
+    main section#contacte iframe {
+        width: 200px;
+        height: 125px;
+    }
+}
+
+@media screen and (max-width: 250px) {
+    main div#carruselImatges img {
+        height: 250px;
+    }
+
+    main section#meu_perfil div#info_perfil img {
+        height: 160px;
+        width: 160px;
+    }
+
+    main section#contacte iframe {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 200px) {
+    main div#carruselImatges img {
+        height: 200px;
+    }
+
+    main section#meu_perfil div#info_perfil img {
+        height: 120px;
+        width: 120px;
+    }
+}
+
+@media screen and (max-width: 193px) {
+    main section#meu_perfil div#info_perfil img,
+    main section#meu_perfil div#info_perfil hr {
+        display: none;
+    }
