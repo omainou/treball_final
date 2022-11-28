@@ -39,7 +39,7 @@
                     <a class="dropdown-item" href="meves_activitats.php">Les meves activitats</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">Voluntariat</a>
+                    <a class="dropdown-item" href="voluntariat.php">Voluntariat</a>
                   </li>
                 </ul>
               </li>
