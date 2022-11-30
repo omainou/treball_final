@@ -3,6 +3,7 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+
 CREATE TABLE `activitat` (
   `id` int(11) NOT NULL,
   `nom` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -60,6 +61,21 @@ CREATE TABLE `participants_apuntats` (
   `assistir` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+CREATE TABLE `qui_som` (
+  `id` int(11) NOT NULL,
+  `text` int(11) NOT NULL,
+  `id_persona` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `resposta_formulari_consultes` (
+  `id` int(11) NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  `id_admin_resposta` int(11) NOT NULL,
+  `resposta` varchar(350) COLLATE utf8_spanish_ci NOT NULL,
+  `dia` date NOT NULL,
+  `hora` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
 CREATE TABLE `transport` (
   `id` int(11) NOT NULL,
   `id_usuari` int(11) NOT NULL,
@@ -75,6 +91,11 @@ CREATE TABLE `usuari` (
   `contrasenya` text COLLATE utf8_spanish_ci NOT NULL,
   `imatge` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `es_admin` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `vehicles_transport` (
+  `id` int(11) NOT NULL,
+  `vehicle` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE `voluntariat` (
@@ -108,12 +129,22 @@ ALTER TABLE `participants_apuntats`
   ADD KEY `id_activitat` (`id_activitat`),
   ADD KEY `id_usuari` (`id_usuari`);
 
+ALTER TABLE `qui_som`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_persona` (`id_persona`);
+
+ALTER TABLE `resposta_formulari_consultes`
+  ADD PRIMARY KEY (`id`);
+
 ALTER TABLE `transport`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_activitat` (`id_activitat`),
   ADD KEY `id_usuari` (`id_usuari`);
 
 ALTER TABLE `usuari`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `vehicles_transport`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `voluntariat`
@@ -139,10 +170,19 @@ ALTER TABLE `opinio`
 ALTER TABLE `participants_apuntats`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
+ALTER TABLE `qui_som`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `resposta_formulari_consultes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 ALTER TABLE `transport`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `usuari`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `vehicles_transport`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `voluntariat`
@@ -164,6 +204,9 @@ ALTER TABLE `opinio`
 ALTER TABLE `participants_apuntats`
   ADD CONSTRAINT `participants_apuntats_ibfk_1` FOREIGN KEY (`id_activitat`) REFERENCES `activitat` (`id`),
   ADD CONSTRAINT `participants_apuntats_ibfk_2` FOREIGN KEY (`id_usuari`) REFERENCES `usuari` (`id`);
+
+ALTER TABLE `qui_som`
+  ADD CONSTRAINT `qui_som_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `usuari` (`id`);
 
 ALTER TABLE `transport`
   ADD CONSTRAINT `transport_ibfk_1` FOREIGN KEY (`id_activitat`) REFERENCES `activitat` (`id`),
