@@ -1,3 +1,4 @@
+<?php include "servidor/connexio.php"; ?>
 
 <!doctype html>
 <html lang="es">

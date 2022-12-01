@@ -1,3 +1,4 @@
+<?php include "servidor/connexio.php"; ?>
 
 <!doctype html>
 <html lang="es">
@@ -19,8 +20,9 @@
     <section id="confirm_registre">
       <div class="container" id="confirmacio">
 
-        <h2>Registre realitzat</h2>
+        <h2>Registre realitzat correctament</h2>
 
+        <p>Moltes gràcies per confiar amb AILLED.</p>
         <p>Per iniciar sessió accedeix al formulari d'inici de sessió.</p>
 
         <a class="boto_marro btn" href="iniciar_sessio_usuari.php">Inicia sessió</a>
