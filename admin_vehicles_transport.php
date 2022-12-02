@@ -11,18 +11,50 @@
 <body>
   <header>
     <?php
-      include "codi_repetit/menu_navegacio.php";
-      menu_navegacio();
+    include "codi_repetit/menu_navegacio.php";
+    menu_navegacio();
     ?>
   </header>
 
   <main>
     <section id="contingut_pagina">
       <div class="container">
-        <h3>Vehicles de transport</h3>
+        <?php
+        if (isset($_SESSION["id_usuari_sessio"])) {
+          ?>
+          <h3>Vehicles de transport</h3>
+
+          <?php
+          if (isset($_POST["eliminar_vehicle_taula"])) {
+            $id_transport = $_POST["id_vehicle_taula"];
+
+            $sql_delete = "DELETE FROM vehicles_transport WHERE id=?";
+            $resultat_delete = $connexio_PDO->prepare($sql_delete);
+            $resultat_delete->execute([ $id_transport ]);
+
+            echo "<div class='alert alert-success' role='alert'>Vehícle eliminat correctament.</div>";
+          }
+
+          if (isset($_POST["afegir_vehicle_taula"])) {
+            $transport = ucfirst($_POST["transport"]); // converteix el primer caracter a majuscula
+
+            $connexio_PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $connexio_PDO->exec("SET CHARACTER SET utf8");
+
+            $sql_afegir = "INSERT INTO vehicles_transport (vehicle) VALUES (:vehicle)";
+            $resultat = $connexio_PDO->prepare($sql_afegir);
+
+            $resultat->execute(array(
+              ":vehicle" => $transport
+            )
+          );
+
+          echo "<div class='alert alert-success' role='alert'>Vehícle afegit correctament.</div>";
+        }
+        ?>
 
         <div class="py-4">
-          <form class="row g-3" method="post" action="#">
+          <form class="row g-3" method="post" action="admin_vehicles_transport.php">
             <label for="transport" class="form-label">
               Afegeix transport:
             </label>
@@ -47,20 +79,53 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Cotxe</td>
-                  <td>
-                    <button type="button" name="button" class="btn btn-danger">Eliminar</button>
-                  </td>
-                </tr>
 
+                <?php
+
+                $sql = "SELECT * FROM vehicles_transport ORDER BY id ASC";
+                $result = $connexio->query($sql);
+
+                if ($result->num_rows > 0) {
+                  $contador = 1;
+
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+
+                      echo "<td>" . $contador . "</td>";
+                      $contador++;
+
+                      echo "<td>" . $row["vehicle"] . "</td>";
+
+                      echo "<td>";
+                        echo "<form method='post' action='admin_vehicles_transport.php'>";
+                          echo "<input type='hidden' class='form-control' name='id_vehicle_taula' value='" . $row['id'] . "'>";
+                          echo "<input type='submit' class='btn btn-danger' value='Eliminar' name='eliminar_vehicle_taula'>";
+                        echo "</form>";
+                      echo "</td>";
+
+                    echo "</tr>";
+                  }
+
+                } else {
+                  echo "<tr>";
+                    echo "<td colspan='4'><h6 class='text-center'>Cap vehicle registrat.</h6></td>";
+                  echo "</tr>";
+                }
+
+                ?>
               </tbody>
             </table>
           </div>
         </div>
-      </div>
-    </section>
+        <?php
+
+      } else {
+        no_ha_iniciat_sessio();
+      }
+      ?>
+
+    </div>
+  </section>
 
   </main>
 
