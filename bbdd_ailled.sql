@@ -3,7 +3,6 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
 CREATE TABLE `activitat` (
   `id` int(11) NOT NULL,
   `nom` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -18,10 +17,15 @@ CREATE TABLE `activitat` (
   `imatge` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `transport` int(11) NOT NULL,
   `lloc_sortida_transport` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `id_vehicle_transport` int(11) NOT NULL,
   `voluntaris` int(11) NOT NULL,
   `voluntaris_disponibles` int(11) NOT NULL,
   `esta_acceptada` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO `activitat` (`id`, `nom`, `id_usuari`, `ubicacio`, `descripcio`, `participants`, `participants_disponibles`, `dia`, `hora`, `preu`, `imatge`, `transport`, `lloc_sortida_transport`, `id_vehicle_transport`, `voluntaris`, `voluntaris_disponibles`, `esta_acceptada`) VALUES
+(1, 'Excursió d\'Andorra', 1, 'Andorra la Vella', 'Excursió a Andorra. Visitarem el país més petit dels Pirineus. T\'hi apuntes?', 100, 100, '2023-03-01', '07:00:00', 0, '551_andorra.jpg', 1, 'Plaça de Lesseps de Barcelona', 4, 10, 10, 0),
+(2, 'Excursió d\'Andorra', 1, 'Andorra la Vella', 'Excursió a Andorra. Visitarem el país més petit dels Pirineus. T\'hi apuntes?', 100, 100, '2023-03-01', '07:00:00', 0, '551_andorra.jpg', 1, 'Plaça de Lesseps de Barcelona', 4, 10, 10, 1);
 
 CREATE TABLE `faqs` (
   `id` int(11) NOT NULL,
@@ -93,10 +97,22 @@ CREATE TABLE `usuari` (
   `es_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO `usuari` (`id`, `nom`, `telefon`, `email`, `contrasenya`, `imatge`, `es_admin`) VALUES
+(1, 'Oriol Mainou', 666666666, 'omainou@uoc.edu', '$2y$12$Y0uEpHVEx/I9UNH.pFUBb.67HwnbR8Umf5OI0BeBZHyDLE91Zhv9C', '8334_cadaques.jpg', 1),
+(2, 'Josep Maria Estrada', 633333302, 'jmestrada@gmail.com', '$2y$12$5vSiees/hUz/MGo2gA/drOPbxA/yZOvRDrFvEbB1H71BCr.NJUbaK', '-', 0),
+(3, 'Anna Perez', 654789654, 'annaperez@gmail.com', '$2y$12$5vSiees/hUz/MGo2gA/drOPbxA/yZOvRDrFvEbB1H71BCr.NJUbaK', '-', 0);
+
 CREATE TABLE `vehicles_transport` (
   `id` int(11) NOT NULL,
   `vehicle` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO `vehicles_transport` (`id`, `vehicle`) VALUES
+(1, 'Cotxe'),
+(2, 'Moto'),
+(3, 'Tren'),
+(4, 'Autocar'),
+(5, 'Avió');
 
 CREATE TABLE `voluntariat` (
   `id` int(11) NOT NULL,
@@ -106,7 +122,8 @@ CREATE TABLE `voluntariat` (
 
 ALTER TABLE `activitat`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_usuari` (`id_usuari`);
+  ADD KEY `id_usuari` (`id_usuari`),
+  ADD KEY `id_vehicle_transport` (`id_vehicle_transport`);
 
 ALTER TABLE `faqs`
   ADD PRIMARY KEY (`id`),
@@ -153,7 +170,7 @@ ALTER TABLE `voluntariat`
   ADD KEY `id_usuari` (`id_usuari`);
 
 ALTER TABLE `activitat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 ALTER TABLE `faqs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
@@ -180,16 +197,17 @@ ALTER TABLE `transport`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `usuari`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 ALTER TABLE `vehicles_transport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 ALTER TABLE `voluntariat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `activitat`
-  ADD CONSTRAINT `activitat_ibfk_1` FOREIGN KEY (`id_usuari`) REFERENCES `usuari` (`id`);
+  ADD CONSTRAINT `activitat_ibfk_1` FOREIGN KEY (`id_usuari`) REFERENCES `usuari` (`id`),
+  ADD CONSTRAINT `activitat_ibfk_2` FOREIGN KEY (`id_vehicle_transport`) REFERENCES `vehicles_transport` (`id`);
 
 ALTER TABLE `faqs`
   ADD CONSTRAINT `faqs_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `usuari` (`id`);
