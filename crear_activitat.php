@@ -11,8 +11,8 @@
 <body>
   <header>
     <?php
-    include "codi_repetit/menu_navegacio.php";
-    menu_navegacio();
+      include "codi_repetit/menu_navegacio.php";
+      menu_navegacio();
     ?>
   </header>
 

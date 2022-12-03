@@ -32,5 +32,5 @@
     $_SESSION['last_action'] = time();
 
     // CONNEXIÓ AMB TOTA LA PÀGINA
-    //include "codi_repetit/funcio_no_iniciat_sessio.php";
+    include "codi_repetit/funcio_no_iniciat_sessio.php";
 ?>

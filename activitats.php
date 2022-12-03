@@ -43,45 +43,307 @@
           </form>
         </div>
 
+        <div class="row">
+          <?php
+
+          if (isset($_POST["buscardata"])) {
+            $dia_buscar = $_POST["inputdia"];
+            $sql = "SELECT * FROM activitat WHERE dia = '$dia_buscar' AND esta_acceptada = 1 AND participants_disponibles > 0 ORDER BY hora ASC";
+            $result = $connexio->query($sql);
+
+            if ($result->num_rows > 0) {
+              echo "<h4 class='py-2'>- Data cercada: " . date("d-m-Y", strtotime($dia_buscar)) . "</h4>";
+
+              while($row = $result->fetch_assoc()) {
+                ?>
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <?php
+                    echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["id"] ."' class='card-img-top' height='250'>";
+                    ?>
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <?php
+                        echo $row["nom"];
+                        ?>
+                      </h5>
+                      <p class="card-text">
+                        Creada per:
+                        <?php
+                        $sql_usuari = "SELECT nom FROM usuari WHERE id=" . $row["id_usuari"];
+                        $resultat_usuari = $connexio->query($sql_usuari);
+
+                        if ($resultat_usuari->num_rows > 0) {
+                          while($row_usuari = $resultat_usuari->fetch_assoc()) {
+                            echo $row_usuari["nom"] . ".";
+                          }
+                        } else {
+                          echo "Usuari desconegut.";
+                        }
+                        ?>
+                      </p>
+                      <p class="card-text">
+                        Ubicació:
+                        <?php
+                        echo $row["ubicacio"] . ".";
+                        ?>
+                      </p>
+                      <p class="card-text">
+                        Places disponibles:
+                        <?php
+                        echo $row["participants_disponibles"] . ".";
+                        ?>
+                      </p>
+                      <p class="card-text">
+                        Dia i hora:
+                        <?php
+                        $data_convertida = date("d-m-Y", strtotime($row["dia"]));
+                        $hora_convertida = date("g:ia", strtotime($row["hora"]));
+                        echo $data_convertida . " " . $hora_convertida;
+                        ?>
+                      </p>
+                      <p class="card-text">
+                        Preu:
+                        <?php
+                        if($row["preu"] == 0) {
+                          echo "Gratuïta.";
+                        } else {
+                          echo $row["preu"] . "€.";
+                        }
+                        ?>
+                      </p>
+                      <p class="card-text">
+                        Conté transport l'activitat:
+                        <?php
+                        if($row["transport"] > 0) {
+                          echo "Sí.";
+                        } else {
+                          echo "No.";
+                        }
+                        ?>
+                      </p>
+
+                      <hr>
+
+                      <div class="veuremes">
+                        <a href="detall_activitat.php?id=<?php echo $row["id"]?>" class="boto_marro btn">Veure més</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <?php
+              }
+            } else {
+              ?>
+              <div class="alert alert-danger" role="alert">
+                <h5 class="alert-heading">Cap activitat amb aquesta data</h5>
+              </div>
+              <?php
+            }
+          }
+
+          if (isset($_POST["buscarnom"])) {
+            $nom_buscar = $_POST["inputnom"];
+            $dia_ara = date("Y-m-d");
+
+            $sql = "SELECT * FROM activitat WHERE nom LIKE '%" . $nom_buscar . "%' AND dia >= '$dia_ara' ORDER BY dia ASC";
+            $result = $connexio->query($sql);
+
+            if ($result->num_rows > 0) {
+              echo "<h4 class='py-2'>- Nom cercat: " . $nom_buscar . "</h4>";
+
+              while($row = $result->fetch_assoc()) {
+                ?>
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <?php
+                    echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["id"] ."' class='card-img-top' height='250'>";
+                    ?>
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <?php
+                        echo $row["nom"];
+                        ?>
+                      </h5>
+                      <p class="card-text">
+                        Creada per:
+                        <?php
+                        $sql_usuari = "SELECT nom FROM usuari WHERE id=" . $row["id_usuari"];
+                        $resultat_usuari = $connexio->query($sql_usuari);
+
+                        if ($resultat_usuari->num_rows > 0) {
+                          while($row_usuari = $resultat_usuari->fetch_assoc()) {
+                            echo $row_usuari["nom"] . ".";
+                          }
+                        } else {
+                          echo "Usuari desconegut.";
+                        }
+                        ?>
+                      </p>
+                      <p class="card-text">
+                        Ubicació:
+                        <?php
+                        echo $row["ubicacio"] . ".";
+                        ?>
+                      </p>
+                      <p class="card-text">
+                        Places disponibles:
+                        <?php
+                        echo $row["participants_disponibles"] . ".";
+                        ?>
+                      </p>
+                      <p class="card-text">
+                        Dia i hora:
+                        <?php
+                        $data_convertida = date("d-m-Y", strtotime($row["dia"]));
+                        $hora_convertida = date("g:ia", strtotime($row["hora"]));
+                        echo $data_convertida . " " . $hora_convertida;
+                        ?>
+                      </p>
+                      <p class="card-text">
+                        Preu:
+                        <?php
+                        if($row["preu"] == 0) {
+                          echo "Gratuïta.";
+                        } else {
+                          echo $row["preu"] . "€.";
+                        }
+                        ?>
+                      </p>
+                      <p class="card-text">
+                        Conté transport l'activitat:
+                        <?php
+                        if($row["transport"] > 0) {
+                          echo "Sí.";
+                        } else {
+                          echo "No.";
+                        }
+                        ?>
+                      </p>
+
+                      <hr>
+
+                      <div class="veuremes">
+                        <a href="detall_activitat.php?id=<?php echo $row["id"]?>" class="boto_marro btn">Veure més</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <?php
+              }
+            } else {
+              ?>
+              <div class="alert alert-danger" role="alert">
+                <h5 class="alert-heading">Cap activitat amb aquestes lletres en el nom</h5>
+              </div>
+              <?php
+            }
+          }
+
+          ?>
+        </div>
+
         <hr>
 
         <div class="row" id="caselles_activitats">
 
-          <div class="col-lg-4 mb-4">
-            <div class="card">
-              <img src="imatges/activitats/bcn.jpg" alt="Imatge" class="card-img-top" height="250">
+          <?php
+          $dia_ara = date("Y-m-d");
+          $sql = "SELECT * FROM activitat WHERE dia >= '$dia_ara' AND esta_acceptada = 1 AND participants_disponibles > 0 ORDER BY dia ASC";
+          $result = $connexio->query($sql);
 
-              <div class="card-body">
-                <h5 class="card-title">
-                  Activitat 1
-                </h5>
-                <p class="card-text">
-                  Creada per: Oriol Mainou
-                </p>
-                <p class="card-text">
-                  Ubicació: Manresa
-                </p>
-                <p class="card-text">
-                  Places disponibles: 320
-                </p>
-                <p class="card-text">
-                  Dia i hora: 25/05/2024
-                </p>
-                <p class="card-text">
-                  Preu: 5€
-                </p>
-                <p class="card-text">
-                  Conté transport l'activitat: Sí
-                </p>
+          if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+              ?>
+              <div class="col-lg-4 mb-4">
+                <div class="card">
+                  <?php
+                  echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["id"] ."' class='card-img-top' height='250'>";
+                  ?>
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <?php
+                      echo $row["nom"];
+                      ?>
+                    </h5>
+                    <p class="card-text">
+                      Creada per:
+                      <?php
+                      $sql_usuari = "SELECT nom FROM usuari WHERE id=" . $row["id_usuari"];
+                      $resultat_usuari = $connexio->query($sql_usuari);
 
-                <hr>
+                      if ($resultat_usuari->num_rows > 0) {
+                        while($row_usuari = $resultat_usuari->fetch_assoc()) {
+                          echo $row_usuari["nom"] . ".";
+                        }
+                      } else {
+                        echo "Usuari desconegut.";
+                      }
+                      ?>
+                    </p>
+                    <p class="card-text">
+                      Ubicació:
+                      <?php
+                      echo $row["ubicacio"] . ".";
+                      ?>
+                    </p>
+                    <p class="card-text">
+                      Places disponibles:
+                      <?php
+                      echo $row["participants_disponibles"] . ".";
+                      ?>
+                    </p>
+                    <p class="card-text">
+                      Dia i hora:
+                      <?php
+                      $data_convertida = date("d-m-Y", strtotime($row["dia"]));
+                      $hora_convertida = date("g:ia", strtotime($row["hora"]));
+                      echo $data_convertida . " " . $hora_convertida;
+                      ?>
+                    </p>
+                    <p class="card-text">
+                      Preu:
+                      <?php
+                      if($row["preu"] == 0) {
+                        echo "Gratuïta.";
+                      } else {
+                        echo $row["preu"] . "€.";
+                      }
+                      ?>
+                    </p>
+                    <p class="card-text">
+                      Conté transport l'activitat:
+                      <?php
+                      if($row["transport"] > 0) {
+                        echo "Sí.";
+                      } else {
+                        echo "No.";
+                      }
+                      ?>
+                    </p>
 
-                <div class="veuremes">
-                  <a href="#" class="boto_marro btn">Veure més</a>
+                    <hr>
+
+                    <div class="veuremes">
+                      <a href="detall_activitat.php?id=<?php echo $row["id"]?>" class="boto_marro btn">Veure més</a>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <?php
+            }
+          } else {
+            ?>
+            <div class="alert alert-danger" role="alert">
+              <h4 class="alert-heading">Cap activitat disponible!</h4>
+              <hr>
+              <p class="mb-0">Crea una activitat i poder coneixer gent.</p> <br>
+              <a href="crear_activitat.php" class="btn btn-outline-danger">Crear activitat</a>
             </div>
-          </div>
+            <?php
+          }
+          ?>
+
         </div>
       </div>
     </section>
@@ -90,8 +352,8 @@
 
   <footer>
     <?php
-    include "codi_repetit/peu_pagina.php";
-    footer();
+      include "codi_repetit/peu_pagina.php";
+      footer();
     ?>
   </footer>
 
