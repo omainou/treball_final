@@ -116,6 +116,9 @@
                           <a class="dropdown-item" href="admin_vehicles_transport.php">Vehicles de transport</a>
                         </li>
                         <li>
+                          <a class="dropdown-item" href="admin_newsletter.php">Newsletter</a>
+                        </li>
+                        <li>
                           <hr class="dropdown-divider">
                         </li>
                         <?php
