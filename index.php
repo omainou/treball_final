@@ -40,12 +40,12 @@
 
     <section id="contingut_pagina">
       <div class="container">
-        <h3>Les activitats més pròximes</h3>
+        <h3>Pròximes activitats disponibles</h3>
 
         <div class="row" id="caselles_activitats">
           <?php
           $dia_ara = date("Y-m-d");
-          $sql = "SELECT * FROM activitat WHERE dia >= '$dia_ara' AND esta_acceptada = 1 AND participants_disponibles > 0 ORDER BY dia ASC";
+          $sql = "SELECT * FROM activitat WHERE dia >= '$dia_ara' AND esta_acceptada = 1 AND participants_disponibles > 0 ORDER BY dia ASC LIMIT 6";
           $result = $connexio->query($sql);
 
           if ($result->num_rows > 0) {
