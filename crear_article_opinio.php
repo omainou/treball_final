@@ -17,9 +17,39 @@
   </header>
 
   <main>
-
     <section id="formulari_crear_activitat">
-      <div class="container">
+      <?php
+      if (isset($_SESSION["id_usuari_sessio"])) {
+        ?>
+        <div class="container">
+          <?php
+          if (isset($_POST["submit_article"])) {
+            $titol_article = $_POST["titol_article"];
+            $descripcio_article = $_POST["descripcio_article"];
+            $activitat_article = $_POST["activitat_article"];
+            $valorar_article = $_POST["valorar_article"];
+
+            $connexio_PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $connexio_PDO->exec("SET CHARACTER SET utf8");
+
+            $sql_afegir_article = "INSERT INTO opinio (id_usuari, id_activitat, titol, descripcio, valoracio, dia)
+                                    VALUES (:id_usuari, :activitat_article, :titol_article, :descripcio_article, :valorar_article, :dia)";
+            $resultat_afegir_article = $connexio_PDO->prepare($sql_afegir_article);
+
+            $resultat_afegir_article->execute(array(
+              ":titol_article" => $titol_article,
+              ":id_usuari" => $_SESSION['id_usuari_sessio'],
+              ":descripcio_article" => $descripcio_article,
+              ":activitat_article" => $activitat_article,
+              ":valorar_article" => $valorar_article,
+              ":dia" => date("Y-m-d")
+            )
+          );
+
+          echo "<div class='alert alert-success'  role='alert'>Artícle creat correctament.</div>";
+        }
+        ?>
+
         <h3>Crear article d'opinió</h3>
         <p>A través d'aquest formulari pots valorar l'activitat realitzada.</p>
         <h6 class=" text-danger">* Camps obligatoris</h6>
@@ -49,10 +79,17 @@
                 <span class="text-danger">*</span>
               </label>
               <select id="activitat" name="activitat_article" class="form-select">
-                <option value="1">ABCDE</option>
-                <option value="2">FGHIJ</option>
-                <option value="3">KLMNO</option>
-                <option value="4">PQRST</option>
+                <?php
+                $dia_avui = date("Y-m-d");
+
+                $sql_select_act = "SELECT * FROM activitat WHERE dia <= '$dia_avui' ORDER BY nom ASC";
+                $result_select_act = $connexio->query($sql_select_act);
+
+                while ($row_select_opinio = $result_select_act->fetch_assoc()) {
+                  $dia = date("d-m-Y", strtotime($row_select_opinio["dia"]));
+                  echo "<option value='" . $row_select_opinio["id"] . "'>" . $row_select_opinio["nom"] . " (" . $dia . ")</option>";
+                }
+                ?>
               </select>
             </div>
 
@@ -65,12 +102,18 @@
             </div>
 
             <div class="col-12">
-              <input type="submit" class="btn boto_marro" value="Crear activitat" name="submit_article">
+              <input type="submit" class="btn boto_marro" value="Crear opinió" name="submit_article">
             </div>
           </form>
         </div>
       </div>
-    </section>
+      <?php
+
+    } else {
+      no_ha_iniciat_sessio();
+    }
+    ?>
+  </section>
 
   </main>
 
