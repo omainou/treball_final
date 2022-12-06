@@ -91,7 +91,7 @@
 
           <hr>
 
-          <h3>Activitats ja realitzades</h3>
+          <h3>Activitats creades ja realitzades</h3>
 
           <div class="row" id="caselles_activitats">
             <?php
@@ -141,7 +141,7 @@
             } else {
               ?>
               <div class="alert alert-danger" role="alert">
-                <h4 class="alert-heading">Cap activitat realitzada fins a l'actualitat.</h4>
+                <h4 class="alert-heading">Cap activitat creada fins a l'actualitat.</h4>
               </div>
               <?php
             }

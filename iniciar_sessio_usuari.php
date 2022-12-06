@@ -81,8 +81,6 @@
           }
         ?>
 
-
-
       </div>
     </section>
 
@@ -90,8 +88,8 @@
 
   <footer>
     <?php
-    include "codi_repetit/peu_pagina.php";
-    footer();
+      include "codi_repetit/peu_pagina.php";
+      footer();
     ?>
   </footer>
 
