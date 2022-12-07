@@ -67,7 +67,7 @@
               <li class="nav-item dropdown">
                 <a style="font-weight: bold;" class="nav-link active dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <?php
-                  $connexio = new mysqli("localhost", "root", "", "ailled");
+                  $connexio = new mysqli("localhost", "root", "", "bbdd_ailled");
                   $connexio->set_charset("utf8");
 
                   $sql = "SELECT * FROM usuari WHERE id = " . $_SESSION['id_usuari_sessio'] ;
