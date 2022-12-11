@@ -84,6 +84,9 @@
                   <li>
                     <a class="dropdown-item" href="perfil.php">El meu perfil</a>
                   </li>
+                  <li>
+                    <a class="dropdown-item" href="pagar_activitats.php">Pagar activitats</a>
+                  </li>
 
                   <li>
                     <hr class="dropdown-divider">

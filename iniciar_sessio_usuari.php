@@ -73,7 +73,10 @@
                     <input type="submit" class="btn boto_marro" value="Entrar" name="enviar">
                   </div>
                 </form>
+
+
               </div>
+              <p>Has oblidat la contrasenya? Recupera-la <a href="recuperar_contrasenya.php">aquí</a>.</p>
             <?php
 
           } else {
