@@ -87,6 +87,9 @@
                   <li>
                     <a class="dropdown-item" href="pagar_activitats.php">Pagar activitats</a>
                   </li>
+                  <li>
+                    <a class="dropdown-item" href="formulari_consultes.php">Consultes</a>
+                  </li>
 
                   <li>
                     <hr class="dropdown-divider">
@@ -120,6 +123,9 @@
                         </li>
                         <li>
                           <a class="dropdown-item" href="admin_newsletter.php">Newsletter</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="respondre_formulari_consultes.php">Respondre consultes</a>
                         </li>
                         <li>
                           <hr class="dropdown-divider">
