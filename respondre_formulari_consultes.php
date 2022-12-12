@@ -43,7 +43,6 @@
             );
 
             echo "<div class='alert alert-success' role='alert'>Respost correctament.</div>";
-
           }
         ?>
 
@@ -60,11 +59,9 @@
               <div class="card text-bg-light mb-3">
                 <div class="card-body">
                   <h5 class="card-title">Consulta <?php echo $num; ?>:</h5>
-
                   <p class="card-text">
                     <?php echo $row_consulta["pregunta"]; ?>
                   </p>
-
                   <p class="card-text text-muted">
                     <?php
                     $sql_usuari_consulta = "SELECT * FROM usuari WHERE id=" . $row_consulta["id_usuari"];
@@ -75,7 +72,6 @@
                     }
                     ?>
                   </p>
-
                   <p class="card-text text-muted">
                     <?php
                     $data_convertida = date("d-m-Y", strtotime($row_consulta["dia"]));
@@ -120,9 +116,9 @@
 
                 </div>
               </div>
+
               <?php
               $num++;
-
             }
           }
           ?>

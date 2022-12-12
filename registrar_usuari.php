@@ -17,16 +17,13 @@
   </header>
 
   <main>
-
     <section id="formulari_registrarse">
       <div class="container">
         <h3>Registrar-me a AILLED</h3>
         <h6 class=" text-danger">* Camps obligatoris</h6>
 
         <?php
-
         if (isset($_POST['enviar'])) {
-
           $nom = $_POST['nom'];
           $email = $_POST['email'];
           $contrasenya = $_POST['contrasenya'];
