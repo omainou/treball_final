@@ -19,55 +19,75 @@
   <main>
     <section id="contingut_pagina">
       <div class="container">
-        <h3>Administrar pàgina "Qui som?"</h3>
-        <p>Aquí es mostra el text que es visualitza a la pàgina "Qui som?".</p>
-
         <?php
-          if (isset($_POST["submit"])) {
-            $quisom = $_POST["quisom"];
-            $sessions = $_SESSION['id_usuari_sessio'];
+        if (isset($_SESSION["id_usuari_sessio"])) {
+          $sessio = $_SESSION["id_usuari_sessio"];
+          $sql_admin = "SELECT * FROM usuari WHERE es_admin > 0 AND id = '$sessio'";
+          $resultat_admin = $connexio->query($sql_admin);
 
-            $sql_update = "UPDATE qui_som SET text=?, id_persona=? WHERE id=1";
-            $resultat_update = $connexio_PDO->prepare($sql_update);
-
-            $resultat_update->execute([ $quisom , $sessions ]);
-
-            echo "<div class='alert alert-success' role='alert'>Editat correctament.</div>";
-          }
-        ?>
-
-        <form action="admin_qui_som.php" method="post" class="row g-3">
-          <div class="col-12">
-            <label for="quisom" class="form-label">
-              Descripció
-              <span class="text-muted" id="max_paraules">[Màxim de lletres: 650]</span>
-            </label>
+          if ($resultat_admin->num_rows > 0) {
+            ?>
+            <h3>Administrar pàgina "Qui som?"</h3>
+            <p>Aquí es mostra el text que es visualitza a la pàgina "Qui som?".</p>
 
             <?php
-            $sql_qui_som = "SELECT * FROM qui_som";
-            $resultat_qui_som = $connexio->query($sql_qui_som);
+              if (isset($_POST["submit"])) {
+                $quisom = $_POST["quisom"];
+                $sessions = $_SESSION['id_usuari_sessio'];
 
-            if ($resultat_qui_som->num_rows > 0) {
-              while ($row_qui_som = $resultat_qui_som->fetch_assoc()) {
-                ?>
-                <textarea name="quisom" rows="8" class="form-control" maxlength="650" required><?php echo $row_qui_som["text"]; ?></textarea>
-                <?php
+                $sql_update = "UPDATE qui_som SET text=?, id_persona=? WHERE id=1";
+                $resultat_update = $connexio_PDO->prepare($sql_update);
 
-                $sql_usuari = "SELECT * FROM usuari WHERE id = " . $row_qui_som["id_persona"];
-                $resultat_usuari = $connexio->query($sql_usuari);
+                $resultat_update->execute([ $quisom , $sessions ]);
 
-                while ($row_usuari = $resultat_usuari->fetch_assoc()) {
-                  echo "<p class='text-muted'>Últim usuari que va editar la pàgina: " . $row_usuari["nom"] . "</p>";
-                }
+                echo "<div class='alert alert-success' role='alert'>Editat correctament.</div>";
               }
-            }
             ?>
-          </div>
 
-          <div class="col-12">
-            <input type="submit" class="btn boto_marro" value="Editar" name="submit">
-          </div>
-        </form>
+            <form action="admin_qui_som.php" method="post" class="row g-3">
+              <div class="col-12">
+                <label for="quisom" class="form-label">
+                  Descripció
+                  <span class="text-muted" id="max_paraules">[Màxim de lletres: 650]</span>
+                </label>
+
+                <?php
+                $sql_qui_som = "SELECT * FROM qui_som";
+                $resultat_qui_som = $connexio->query($sql_qui_som);
+
+                if ($resultat_qui_som->num_rows > 0) {
+                  while ($row_qui_som = $resultat_qui_som->fetch_assoc()) {
+                    ?>
+                    <textarea name="quisom" rows="8" class="form-control" maxlength="650" required><?php echo $row_qui_som["text"]; ?></textarea>
+                    <?php
+
+                    $sql_usuari = "SELECT * FROM usuari WHERE id = " . $row_qui_som["id_persona"];
+                    $resultat_usuari = $connexio->query($sql_usuari);
+
+                    while ($row_usuari = $resultat_usuari->fetch_assoc()) {
+                      echo "<p class='text-muted'>Últim usuari que va editar la pàgina: " . $row_usuari["nom"] . "</p>";
+                    }
+                  }
+                }
+                ?>
+              </div>
+
+              <div class="col-12">
+                <input type="submit" class="btn boto_marro" value="Editar" name="submit">
+              </div>
+            </form>
+            <?php
+          } else {
+            ?>
+            <h2>No té permisos per visualitzar la pàgina</h2>
+            <p>Torna a la pàgina principal.</p>
+            <a class="boto_marro btn" href="index.php">Pàgina inicial</a>
+            <?php
+          }
+        } else {
+          no_ha_iniciat_sessio();
+        }
+        ?>
 
       </div>
     </section>
