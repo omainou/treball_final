@@ -41,6 +41,16 @@
               echo "<div class='alert alert-success'  role='alert'>Activitat acceptada.</div>";
             }
 
+            if (isset($_POST["delete_activitat"])) {
+              $id_activitat = $_POST["id_activitat"];
+
+              $sql_delete = "DELETE FROM activitat WHERE id = " . $id_activitat;
+              $resultat_delete = $connexio_PDO->prepare($sql_delete);
+
+              $resultat_delete->execute();
+
+              echo "<div class='alert alert-danger' role='alert'>Activitat no acceptada. S'ha eliminat correctament.</div>";
+            }
             ?>
 
             <div class="row py-3" id="acceptar_activitats">
@@ -137,6 +147,11 @@
                         <form action="admin_acceptar_activitats.php" method="post">
                           <input type="hidden" name="id_activitat" value="<?php echo $row["id"]?>">
                           <input type="submit" value="Acceptar" name="acceptar_activitat" class="boto_marro btn">
+                        </form>
+
+                        <form class="py-2" action="admin_acceptar_activitats.php" method="post">
+                          <input type="hidden" name="id_activitat" value="<?php echo $row["id"]?>">
+                          <input type="submit" value="Eliminar" name="delete_activitat" class="btn btn-danger">
                         </form>
 
                       </div>

@@ -245,7 +245,7 @@
                       Vehicle a disposició
                     </label>
                     <select class="form-select" id="vehicle_transport" name="vehicle_transport">
-                      <option value="-">-</option>
+                      <option value="0">-</option>
                       <?php
                       $sql_vehicles = "SELECT * FROM vehicles_transport ORDER BY vehicle DESC";
                       $result_vehicles = $connexio->query($sql_vehicles);

@@ -11,8 +11,8 @@
 <body>
   <header>
     <?php
-    include "codi_repetit/menu_navegacio.php";
-    menu_navegacio();
+      include "codi_repetit/menu_navegacio.php";
+      menu_navegacio();
     ?>
   </header>
 
@@ -21,7 +21,7 @@
       <div class="container">
 
         <?php
-          if (isset($_POST["id_usuari_sessio"])) {
+          if (isset($_SESSION["id_usuari_sessio"])) {
             ?>
             <h3>El meu perfil</h3>
             <h6 class=" text-danger">* Camps obligatoris</h6>
@@ -73,11 +73,9 @@
                   <?php
 
                 }
-
               }
 
               echo "<div class='alert alert-success' role='alert'>Dades actualitzades correctament.</div>";
-
             }
 
             // UPDATE CONTRASENYA
@@ -86,7 +84,6 @@
               $contrasenya2 = $_POST["contrasenya2"];
 
               if ($contrasenya == $contrasenya2) {
-
                 $contrasenya_xifrada = password_hash($contrasenya, PASSWORD_DEFAULT, array( "cost" => 12 ));
                 $connexio_PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $connexio_PDO->exec("SET CHARACTER SET utf8");
@@ -186,19 +183,17 @@
                     }
                   }
                   ?>
-
                 </div>
               </div>
             </div>
+
             <?php
           } else {
             header ("Location: index.php");
           }
         ?>
-
       </div>
     </section>
-
   </main>
 
   <footer>

@@ -35,6 +35,9 @@
                 $quisom = $_POST["quisom"];
                 $sessions = $_SESSION['id_usuari_sessio'];
 
+                $connexio_PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $connexio_PDO->exec("SET CHARACTER SET utf8");
+
                 $sql_update = "UPDATE qui_som SET text=?, id_persona=? WHERE id=1";
                 $resultat_update = $connexio_PDO->prepare($sql_update);
 

@@ -166,7 +166,7 @@
             <div class="col-md-4">
               <label for="vehicles" class="form-label">Vehicle a disposició</label>
               <select class="form-select" id="vehicles" name="vehicle_transport">
-                <option value="-">-</option>
+                <option value="0">-</option>
                 <?php
                 $sql_vehicles = "SELECT * FROM vehicles_transport ORDER BY vehicle DESC";
                 $result_vehicles = $connexio->query($sql_vehicles);
