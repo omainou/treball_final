@@ -25,8 +25,18 @@ CREATE TABLE `activitat` (
 
 INSERT INTO `activitat` (`id`, `nom`, `id_usuari`, `ubicacio`, `descripcio`, `participants`, `participants_disponibles`, `dia`, `hora`, `preu`, `imatge`, `transport`, `lloc_sortida_transport`, `id_vehicle_transport`, `voluntaris`, `voluntaris_disponibles`, `esta_acceptada`) VALUES
 (1, 'Excursió a Andorra', 1, 'Andorra la Vella', 'Excursió a Andorra. Visitarem el país més petit dels Pirineus. T\'hi apuntes?', 100, 100, '2022-03-01', '07:00:00', 0, '551_andorra.jpg', 1, 'Plaça de Lesseps de Barcelona', 4, 10, 10, 1),
-(2, 'Visita a la neu d\'Andorra', 3, 'La Massana', 'Excursió a Andorra. Visitarem el país més petit dels Pirineus. T\'hi apuntes?', 80, 65, '2023-01-01', '07:00:00', 0, '551_andorra.jpg', 1, 'Plaça Molina de Barcelona', 4, 7, 7, 1),
-(3, 'Visita a Tarragona', 1, 'Tarragona', 'Visitarem la ciutat Tarragona amb les seves muralles romanes.', 36, 32, '2022-12-09', '12:00:00', 0, '6264_tarragona.jpg', 1, 'Plaça Espanya de Barcelona', 4, 5, 4, 1);
+(2, 'Visita a Barcelona', 3, 'Barcelona', 'Visitarem la ciutat de Barcelona (monuments com la Pedrera, Sagrada Família, Casa Gaudí, etc.). T\'hi apuntes?', 39, 39, '2023-01-21', '12:15:00', 0, '1_bcn.jpg', 1, 'Carrer Diputació 22, Figueres', 4, 7, 6, 1),
+(3, 'Visita a Tarragona', 3, 'Tarragona', 'Visitarem la ciutat Tarragona amb les seves muralles romanes.', 36, 36, '2022-12-09', '12:00:00', 0, '6264_tarragona.jpg', 1, 'Plaça Espanya de Barcelona', 4, 5, 5, 1),
+(4, 'Futbol platja', 4, 'Barcelona', 'A la platja de la Barceloneta organitzem un campionat de futbol platja per a persones cegues. Activitat gratuïta i subvencionada per l\'associació catalana de futbol. Es necessita voluntaris per organitzar el torneig.', 135, 130, '2023-08-10', '11:45:00', 0, '8463_futbolplaya.jpg', 1, 'Plaça Espanya de Barcelona', 3, 5, 5, 1),
+(5, 'Classes de pintura', 1, 'Platja d\'Aro', 'L\'ajuntament de Castell-Platja d\'Aro organitza classes de pintura per a persones amb discapacitat funcional. T\'hi esperem!', 10, 10, '2023-01-05', '11:00:00', 0, '6296_paint.jpg', 1, 'Plaça de Lesseps de Barcelona', 6, 0, 0, 1),
+(6, 'Cuinem al Maresme', 2, 'Mataró', 'L\'ajuntament de Mataró organitza, a través de la seva televisió pública, un concurs de cuina anomenat \"Cuinem al Maresme\". El guanyador s\'emporta un xec de 5 mil euros. Els programes es graven cada dimarts i dijous de febrer a abril.', 30, 25, '2023-02-02', '16:15:00', 0, '6097_cuina.jpg', 1, 'Plaça Espanya de Barcelona', 4, 4, 3, 1),
+(7, 'Classes de memòria', 1, 'Tortosa', 'AILLED organitza a la ciutat de Tortosa (Tarragona) classes de memòria per a persones amb discapacitat.', 11, 11, '2023-06-12', '09:30:00', 0, '3598_classe.jpg', 1, 'Carrer París, 19, Sant Cugat del Vallès', 3, 2, 2, 1),
+(8, 'Taller de mecànica', 2, 'L\'Hospitalet de Llobregat', 'El taller \"Reparamos Coches Modernos\" realitza un taller per a persones amb discapacitat funcional per tal que, en un futur, puguin treballar amb l\'empresa. Activitat a càrrec del mecànic de cotxes Pedro Martí Alonso.', 10, 10, '2023-04-10', '10:15:00', 0, '7772_autos.jpg', 1, 'Carrer París, 19, Sant Cugat del Vallès', 3, 2, 1, 1),
+(9, 'Hort urbà', 1, 'Badalona', 'L\'ajuntament de Badalona ha cedit a AILLED un terreny per tal que persones amb síndrome de Down puguin cultivar un hort urbà a la ciutat badalonina. T\'hi apuntes? Nosaltres t\'hi esperem!', 8, 6, '2022-12-29', '17:00:00', 0, '7717_taronja.jpg', 1, 'Plaça de Sants de Barcelona', 3, 1, 1, 1),
+(10, 'Teatre', 1, 'Vilassar de Mar', 'Una associació del municipi de Vilassar ens deixa el seu local per dur a terme activitats a AILLED. Organitzem una classe de teatre per a persones amb discapacitat intel·lectual.', 25, 25, '2023-01-13', '16:30:00', 0, '2952_theatre.jpg', 1, 'Plaça de Lesseps de Barcelona', 4, 3, 3, 1),
+(11, 'Classes d\'Excel', 2, 'Figueres', 'Des d\'AILLED organitzem, per a persones amb discapacitat, classes d\'Excel per tal que aprenguin a fer-lo servir. ', 22, 21, '2023-05-04', '09:45:00', 0, '9889_laptop.jpg', 1, 'Plaça de Lesseps de Barcelona', 4, 3, 2, 1),
+(12, 'Museu de xocolata', 5, 'Manresa', 'El museu de xocolata de Manresa ens cedeix el seu espai per apendre com es fa la xocolata. Activitat per persones amb discapacitat i per a les seves families.', 50, 50, '2023-07-06', '11:30:00', 0, '6701_xocolata.jpg', 1, 'Plaça del Maresme (Mataró)', 3, 7, 7, 1),
+(22, 'Visita al MNAC', 1, 'Barcelona', 'Visita al Museu Nacional d\'Art de Catalunya. Visita que ens explicarà l\'art modern català.', 23, 23, '2023-02-23', '09:30:00', 0, '5674_mnac.jpg', 0, '', 0, 2, 2, 1);
 
 CREATE TABLE `faqs` (
   `id` int(11) NOT NULL,
@@ -45,7 +55,8 @@ CREATE TABLE `formulari_consultes` (
 
 INSERT INTO `formulari_consultes` (`id`, `id_usuari`, `pregunta`, `dia`, `hora`) VALUES
 (1, 4, 'No em funciona com afegir la imatge a l\'activitat.', '2022-12-11', '19:14:17'),
-(2, 3, 'A les activitats de muntanya es necessari un calçat esportiu?', '2022-12-11', '23:25:59');
+(2, 3, 'A les activitats de muntanya es necessari un calçat esportiu?', '2022-12-11', '23:25:59'),
+(16, 5, 'Vull crear una activitat, però tinc un dubte:  haig de resevar els autocars o els gestiona AILLED?', '2022-12-13', '16:08:28');
 
 CREATE TABLE `newsletter` (
   `id` int(11) NOT NULL,
@@ -82,9 +93,10 @@ CREATE TABLE `participants_apuntats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO `participants_apuntats` (`id`, `id_usuari`, `id_activitat`, `numero_participants`, `ha_pagat`, `assistir`) VALUES
-(1, 4, 3, 4, 0, 1),
-(3, 1, 2, 5, 1, 0),
-(4, 2, 2, 10, 1, 0);
+(5, 1, 4, 5, 0, 0),
+(6, 5, 9, 2, 0, 0),
+(7, 5, 6, 5, 0, 0),
+(8, 5, 11, 1, 0, 0);
 
 CREATE TABLE `qui_som` (
   `id` int(11) NOT NULL,
@@ -93,7 +105,7 @@ CREATE TABLE `qui_som` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO `qui_som` (`id`, `text`, `id_persona`) VALUES
-(1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque nec nam aliquam sem. Porttitor lacus luctus accumsan tortor posuere ac. Enim diam vulputate ut pharetra sit. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. In iaculis nunc sed augue lacus viverra vitae. Id diam maecenas ultricies mi eget mauris. Nunc mi ipsum faucibus vitae aliquet. Id faucibus nisl tincidunt eget nullam non nisi est. Elit ut aliquam purus sit. Massa sed elementum tempus egestas sed sed risus!!!', 1);
+(1, 'AILLED som una associació que organitza activitats culturals i esportives per a persones amb discapacitat per a que puguin dur a terme activitats grupals. A més, cada usuari pot crear la seva pròpia activitat sent cada una d\'elles validada pels administradors de la pàgina. Es busca que aquestes activitats lúdiques siguin sempre gratuïtes (subvencionades per associacions / fundacions) o bé de preus molt reduïts pels seus beneficiaris. Crea, apuntat i participa. T\'esperem a AILLED!!', 1);
 
 CREATE TABLE `resposta_formulari_consultes` (
   `id` int(11) NOT NULL,
@@ -117,7 +129,8 @@ CREATE TABLE `transport` (
 
 INSERT INTO `transport` (`id`, `id_usuari`, `id_activitat`, `persones`) VALUES
 (1, 4, 3, 4),
-(2, 1, 2, 5);
+(3, 5, 6, 5),
+(4, 5, 11, 1);
 
 CREATE TABLE `usuari` (
   `id` int(11) NOT NULL,
@@ -133,7 +146,8 @@ INSERT INTO `usuari` (`id`, `nom`, `telefon`, `email`, `contrasenya`, `imatge`, 
 (1, 'Oriol Mainou', 666666666, 'omainou@uoc.edu', '$2y$12$K6b2oxkW6FyCXaU8juC4N.YDszTTKU0IynuWq0/NeD2.oU/dcELs2', '8334_cadaques.jpg', 1),
 (2, 'Josep Maria Estrada', 633333302, 'jmestrada@gmail.com', '$2y$12$5vSiees/hUz/MGo2gA/drOPbxA/yZOvRDrFvEbB1H71BCr.NJUbaK', '-', 0),
 (3, 'Anna Perez', 654789654, 'annaperez@gmail.com', '$2y$12$5vSiees/hUz/MGo2gA/drOPbxA/yZOvRDrFvEbB1H71BCr.NJUbaK', '-', 0),
-(4, 'Maria Pedrosa', 632144778, 'mariapedrosa@gmail.com', '$2y$12$/dzwt83TpecpKD5jLAtsCOpjqpMcEj9egbKfu1p9wYPOe02GM7DE.', '-', 0);
+(4, 'Maria Pedrosa', 632144778, 'mariapedrosa@gmail.com', '$2y$12$/dzwt83TpecpKD5jLAtsCOpjqpMcEj9egbKfu1p9wYPOe02GM7DE.', '-', 0),
+(5, 'Xavier Olot', 600225540, 'xaviolot8@msn.com', '$2y$12$w52IoyNCpqus0buedpXO4Ond8SeF6EpSrpTqQ8ZyEjP6dGvDvR90q', '-', 0);
 
 CREATE TABLE `vehicles_transport` (
   `id` int(11) NOT NULL,
@@ -141,6 +155,7 @@ CREATE TABLE `vehicles_transport` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO `vehicles_transport` (`id`, `vehicle`) VALUES
+(0, 'Cap vehicle'),
 (1, 'Cotxe'),
 (2, 'Moto'),
 (3, 'Tren'),
@@ -155,7 +170,10 @@ CREATE TABLE `voluntariat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO `voluntariat` (`id`, `id_usuari`, `id_activitat`) VALUES
-(4, 3, 3);
+(5, 1, 11),
+(6, 1, 2),
+(7, 1, 8),
+(8, 1, 6);
 
 ALTER TABLE `activitat`
   ADD PRIMARY KEY (`id`),
@@ -209,13 +227,13 @@ ALTER TABLE `voluntariat`
   ADD KEY `id_usuari` (`id_usuari`);
 
 ALTER TABLE `activitat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 ALTER TABLE `faqs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `formulari_consultes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 ALTER TABLE `newsletter`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
@@ -224,7 +242,7 @@ ALTER TABLE `opinio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 ALTER TABLE `participants_apuntats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 ALTER TABLE `qui_som`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
@@ -233,16 +251,16 @@ ALTER TABLE `resposta_formulari_consultes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 ALTER TABLE `transport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 ALTER TABLE `usuari`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 ALTER TABLE `vehicles_transport`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 ALTER TABLE `voluntariat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 ALTER TABLE `activitat`
   ADD CONSTRAINT `activitat_ibfk_1` FOREIGN KEY (`id_usuari`) REFERENCES `usuari` (`id`),
