@@ -29,14 +29,15 @@ INSERT INTO `activitat` (`id`, `nom`, `id_usuari`, `ubicacio`, `descripcio`, `pa
 (3, 'Visita a Tarragona', 3, 'Tarragona', 'Visitarem la ciutat Tarragona amb les seves muralles romanes.', 36, 36, '2022-12-09', '12:00:00', 0, '6264_tarragona.jpg', 1, 'Plaça Espanya de Barcelona', 4, 5, 5, 1),
 (4, 'Futbol platja', 4, 'Barcelona', 'A la platja de la Barceloneta organitzem un campionat de futbol platja per a persones cegues. Activitat gratuïta i subvencionada per l\'associació catalana de futbol. Es necessita voluntaris per organitzar el torneig.', 135, 130, '2023-08-10', '11:45:00', 0, '8463_futbolplaya.jpg', 1, 'Plaça Espanya de Barcelona', 3, 5, 5, 1),
 (5, 'Classes de pintura', 1, 'Platja d\'Aro', 'L\'ajuntament de Castell-Platja d\'Aro organitza classes de pintura per a persones amb discapacitat funcional. T\'hi esperem!', 10, 10, '2023-01-05', '11:00:00', 0, '6296_paint.jpg', 1, 'Plaça de Lesseps de Barcelona', 6, 0, 0, 1),
-(6, 'Cuinem al Maresme', 2, 'Mataró', 'L\'ajuntament de Mataró organitza, a través de la seva televisió pública, un concurs de cuina anomenat \"Cuinem al Maresme\". El guanyador s\'emporta un xec de 5 mil euros. Els programes es graven cada dimarts i dijous de febrer a abril.', 30, 25, '2023-02-02', '16:15:00', 0, '6097_cuina.jpg', 1, 'Plaça Espanya de Barcelona', 4, 4, 3, 1),
+(6, 'Cuinem al Maresme', 2, 'Mataró', 'L\'ajuntament de Mataró organitza, a través de la seva televisió pública, un concurs de cuina anomenat \"Cuinem al Maresme\". El guanyador s\'emporta un xec de 5 mil euros. Els programes es graven cada dimarts i dijous de febrer a abril.', 30, 22, '2023-02-02', '16:15:00', 0, '6097_cuina.jpg', 1, 'Plaça Espanya de Barcelona', 4, 4, 3, 1),
 (7, 'Classes de memòria', 1, 'Tortosa', 'AILLED organitza a la ciutat de Tortosa (Tarragona) classes de memòria per a persones amb discapacitat.', 11, 11, '2023-06-12', '09:30:00', 0, '3598_classe.jpg', 1, 'Carrer París, 19, Sant Cugat del Vallès', 3, 2, 2, 1),
 (8, 'Taller de mecànica', 2, 'L\'Hospitalet de Llobregat', 'El taller \"Reparamos Coches Modernos\" realitza un taller per a persones amb discapacitat funcional per tal que, en un futur, puguin treballar amb l\'empresa. Activitat a càrrec del mecànic de cotxes Pedro Martí Alonso.', 10, 10, '2023-04-10', '10:15:00', 0, '7772_autos.jpg', 1, 'Carrer París, 19, Sant Cugat del Vallès', 3, 2, 1, 1),
 (9, 'Hort urbà', 1, 'Badalona', 'L\'ajuntament de Badalona ha cedit a AILLED un terreny per tal que persones amb síndrome de Down puguin cultivar un hort urbà a la ciutat badalonina. T\'hi apuntes? Nosaltres t\'hi esperem!', 8, 6, '2022-12-29', '17:00:00', 0, '7717_taronja.jpg', 1, 'Plaça de Sants de Barcelona', 3, 1, 1, 1),
 (10, 'Teatre', 1, 'Vilassar de Mar', 'Una associació del municipi de Vilassar ens deixa el seu local per dur a terme activitats a AILLED. Organitzem una classe de teatre per a persones amb discapacitat intel·lectual.', 25, 25, '2023-01-13', '16:30:00', 0, '2952_theatre.jpg', 1, 'Plaça de Lesseps de Barcelona', 4, 3, 3, 1),
 (11, 'Classes d\'Excel', 2, 'Figueres', 'Des d\'AILLED organitzem, per a persones amb discapacitat, classes d\'Excel per tal que aprenguin a fer-lo servir. ', 22, 21, '2023-05-04', '09:45:00', 0, '9889_laptop.jpg', 1, 'Plaça de Lesseps de Barcelona', 4, 3, 2, 1),
 (12, 'Museu de xocolata', 5, 'Manresa', 'El museu de xocolata de Manresa ens cedeix el seu espai per apendre com es fa la xocolata. Activitat per persones amb discapacitat i per a les seves families.', 50, 50, '2023-07-06', '11:30:00', 0, '6701_xocolata.jpg', 1, 'Plaça del Maresme (Mataró)', 3, 7, 7, 1),
-(22, 'Visita al MNAC', 1, 'Barcelona', 'Visita al Museu Nacional d\'Art de Catalunya. Visita que ens explicarà l\'art modern català.', 23, 23, '2023-02-23', '09:30:00', 0, '5674_mnac.jpg', 0, '', 0, 2, 2, 1);
+(13, 'Visita al MNAC', 1, 'Barcelona', 'Visita al Museu Nacional d\'Art de Catalunya. Visita que ens explicarà l\'art modern català.', 23, 23, '2023-02-23', '09:30:00', 0, '5674_mnac.jpg', 0, '', 0, 2, 2, 1),
+(14, 'Estiu a Montjuïc ', 1, 'Barcelona', 'Visitarem Montjuïc i l\'Estadi Olímpic. La Barcelona de 1992.', 60, 60, '2023-07-17', '10:15:00', 0, '4010_montjuic.jpg', 0, '', 0, 5, 5, 0);
 
 CREATE TABLE `faqs` (
   `id` int(11) NOT NULL,
@@ -96,7 +97,8 @@ INSERT INTO `participants_apuntats` (`id`, `id_usuari`, `id_activitat`, `numero_
 (5, 1, 4, 5, 0, 0),
 (6, 5, 9, 2, 0, 0),
 (7, 5, 6, 5, 0, 0),
-(8, 5, 11, 1, 0, 0);
+(8, 5, 11, 1, 0, 0),
+(9, 1, 6, 3, 0, 0);
 
 CREATE TABLE `qui_som` (
   `id` int(11) NOT NULL,
@@ -143,7 +145,7 @@ CREATE TABLE `usuari` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO `usuari` (`id`, `nom`, `telefon`, `email`, `contrasenya`, `imatge`, `es_admin`) VALUES
-(1, 'Oriol Mainou', 666666666, 'omainou@uoc.edu', '$2y$12$K6b2oxkW6FyCXaU8juC4N.YDszTTKU0IynuWq0/NeD2.oU/dcELs2', '8334_cadaques.jpg', 1),
+(1, 'Oriol Mainou', 666666666, 'omainou@uoc.edu', '$2y$12$dgayiE8V0c1dqlg.jNQ13O/xfC3r1TTdaq3ejSsVAgMdOg.cUY7.q', '8334_cadaques.jpg', 1),
 (2, 'Josep Maria Estrada', 633333302, 'jmestrada@gmail.com', '$2y$12$5vSiees/hUz/MGo2gA/drOPbxA/yZOvRDrFvEbB1H71BCr.NJUbaK', '-', 0),
 (3, 'Anna Perez', 654789654, 'annaperez@gmail.com', '$2y$12$5vSiees/hUz/MGo2gA/drOPbxA/yZOvRDrFvEbB1H71BCr.NJUbaK', '-', 0),
 (4, 'Maria Pedrosa', 632144778, 'mariapedrosa@gmail.com', '$2y$12$/dzwt83TpecpKD5jLAtsCOpjqpMcEj9egbKfu1p9wYPOe02GM7DE.', '-', 0),
@@ -227,7 +229,7 @@ ALTER TABLE `voluntariat`
   ADD KEY `id_usuari` (`id_usuari`);
 
 ALTER TABLE `activitat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 ALTER TABLE `faqs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
@@ -242,7 +244,7 @@ ALTER TABLE `opinio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 ALTER TABLE `participants_apuntats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 ALTER TABLE `qui_som`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
