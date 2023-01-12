@@ -66,8 +66,6 @@
                         ?>
                       </p>
 
-                      <hr>
-
                       <div class="veuremes">
                         <a href="detall_activitat.php?id=<?php echo $row["id"]?>" class="boto_marro btn">Veure més</a>
                       </div>
@@ -127,8 +125,6 @@
                         echo $data_convertida . " " . $hora_convertida;
                         ?>
                       </p>
-
-                      <hr>
 
                       <div class="veuremes">
                         <a href="detall_activitat.php?id=<?php echo $row["id"]?>" class="boto_marro btn">Veure més</a>

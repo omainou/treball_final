@@ -56,7 +56,7 @@
 
             <div class="py-4">
               <?php
-              $sql_consulta = "SELECT * FROM formulari_consultes ORDER BY dia";
+              $sql_consulta = "SELECT * FROM formulari_consultes ORDER BY dia DESC";
               $resultat_consulta = $connexio->query($sql_consulta);
 
               if ($resultat_consulta->num_rows > 0) {
@@ -110,7 +110,7 @@
                           <input type="hidden" name="id_consulta" value="<?php echo $row_consulta['id'] ?>">
 
                           <div class="col-md-12">
-                            <label for="consulta" class="form-label">Escriu la consulta</label>
+                            <label for="consulta" class="form-label">Escriu la resposta</label>
                             <textarea name="consulta_usuari" id="consulta" rows="3" required maxlength="350" class="form-control"></textarea>
                           </div>
 

@@ -123,8 +123,6 @@
                         ?>
                       </p>
 
-                      <hr>
-
                       <div class="veuremes">
                         <a href="detall_activitat.php?id=<?php echo $row["id"]?>" class="boto_marro btn">Veure més</a>
                       </div>
@@ -220,8 +218,6 @@
                         }
                         ?>
                       </p>
-
-                      <hr>
 
                       <div class="veuremes">
                         <a href="detall_activitat.php?id=<?php echo $row["id"]?>" class="boto_marro btn">Veure més</a>
@@ -321,8 +317,6 @@
                       }
                       ?>
                     </p>
-
-                    <hr>
 
                     <div class="veuremes">
                       <a href="detall_activitat.php?id=<?php echo $row["id"]?>" class="boto_marro btn">Veure més</a>
