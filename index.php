@@ -31,7 +31,7 @@
         <?php
           for ($i = 2; $i <= 4 ; $i++) {
             echo "<div class='carousel-item'>";
-              echo "<img src='imatges/portada/imatge_$i.jpg' class='d-block w-100' alt='Activitat $i'>";
+              echo "<img src='imatges/portada/imatge_$i.jpg' class='d-block w-100' alt='Imatge $i'>";
             echo "</div>";
           }
         ?>
@@ -45,7 +45,8 @@
         <div class="row" id="caselles_activitats">
           <?php
           $dia_ara = date("Y-m-d");
-          $sql = "SELECT * FROM activitat WHERE dia >= '$dia_ara' AND esta_acceptada = 1 AND participants_disponibles > 0 ORDER BY dia ASC LIMIT 6";
+          $sql = "SELECT * FROM activitat WHERE dia >= '$dia_ara' AND esta_acceptada = 1 
+                    AND participants_disponibles > 0 ORDER BY dia ASC LIMIT 6";
           $result = $connexio->query($sql);
 
           if ($result->num_rows > 0) {
@@ -54,7 +55,7 @@
               <div class="col-lg-4 mb-4">
                 <div class="card">
                   <?php
-                  echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["id"] ."' class='card-img-top' height='250'>";
+                  echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["nom"] ."' class='card-img-top' height='250'>";
                   ?>
                   <div class="card-body">
                     <h5 class="card-title">

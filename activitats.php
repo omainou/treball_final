@@ -59,7 +59,7 @@
                 <div class="col-lg-4 mb-4">
                   <div class="card">
                     <?php
-                    echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["id"] ."' class='card-img-top' height='250'>";
+                    echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["nom"] ."' class='card-img-top' height='250'>";
                     ?>
                     <div class="card-body">
                       <h5 class="card-title">
@@ -155,7 +155,7 @@
                 <div class="col-lg-4 mb-4">
                   <div class="card">
                     <?php
-                    echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["id"] ."' class='card-img-top' height='250'>";
+                    echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["nom"] ."' class='card-img-top' height='250'>";
                     ?>
                     <div class="card-body">
                       <h5 class="card-title">
@@ -245,7 +245,8 @@
 
           <?php
           $dia_ara = date("Y-m-d");
-          $sql = "SELECT * FROM activitat WHERE dia >= '$dia_ara' AND esta_acceptada = 1 AND participants_disponibles > 0 ORDER BY dia ASC";
+          $sql = "SELECT * FROM activitat WHERE dia >= '$dia_ara' AND esta_acceptada = 1 AND participants_disponibles > 0 
+                    ORDER BY dia ASC";
           $result = $connexio->query($sql);
 
           if ($result->num_rows > 0) {
@@ -254,7 +255,7 @@
               <div class="col-lg-4 mb-4">
                 <div class="card">
                   <?php
-                  echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["id"] ."' class='card-img-top' height='250'>";
+                  echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["nom"] ."' class='card-img-top' height='250'>";
                   ?>
                   <div class="card-body">
                     <h5 class="card-title">

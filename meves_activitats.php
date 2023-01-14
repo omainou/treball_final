@@ -37,7 +37,7 @@
                 <div class="col-lg-4 mb-4">
                   <div class="card">
                     <?php
-                    echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["id"] ."' class='card-img-top' height='250'>";
+                    echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["nom"] ."' class='card-img-top' height='250'>";
                     ?>
                     <div class="card-body">
                       <h5 class="card-title">
@@ -103,7 +103,7 @@
                 <div class="col-lg-4 mb-4">
                   <div class="card">
                     <?php
-                    echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["id"] ."' class='card-img-top' height='250'>";
+                    echo "<img src='imatges/activitats/". $row["imatge"] ."' alt='". $row["nom"] ."' class='card-img-top' height='250'>";
                     ?>
                     <div class="card-body">
                       <h5 class="card-title">

@@ -34,15 +34,14 @@
           $result = $connexio->query($sql);
 
           if ($result->num_rows == 0) {
-
             $contrasenya_xifrada = password_hash($contrasenya, PASSWORD_DEFAULT, array( "cost" => 12 ));
 
             $connexio_PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $connexio_PDO->exec("SET CHARACTER SET utf8");
 
             if ($contrasenya == $contrasenya2) {
-
-              $sql_afegir_usuari = "INSERT INTO usuari (nom, telefon, email, contrasenya, imatge, es_admin) VALUES (:nom, :telefon, :email, :contrasenya, '-', 0)";
+              $sql_afegir_usuari = "INSERT INTO usuari (nom, telefon, email, contrasenya, imatge, es_admin) 
+                                        VALUES (:nom, :telefon, :email, :contrasenya, '-', 0)";
               $resultat = $connexio_PDO->prepare($sql_afegir_usuari);
 
               $resultat->execute(array(
