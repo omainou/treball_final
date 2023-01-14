@@ -30,6 +30,8 @@
             <h3>Activitats assistides de cada usuari</h3>
             <p>Cercador de totes les activitats assistides de cada usuari.</p>
 
+            <p>* L'activitat encara no s'ha realitzat.</p>
+
             <form class="row g-3" method="post" action="admin_activitats_assistides_usuaris.php">
               <label for="nom" class="form-label">
                 Nom de l'usuari:
@@ -72,8 +74,8 @@
                     echo "<h5>Usuari cercat: " . $row_usuari["nom"] . "</h5>";
                   }
                 }
-                ?>
 
+                ?>
                 <div class="table-responsive">
                   <table class="table" style="font-size: 15px">
                     <thead>
@@ -81,51 +83,41 @@
                         <th scope="col">-</th>
                         <th scope="col">Nom activitat</th>
                         <th scope="col">Ubicació activitat</th>
-                        <th scope="col">Dia</th>
-                        <th scope="col">Apuntades</th>
-                        <th scope="col">Usuari/a creador/a</th>
-                        <th scope="col">S'ha assistit?</th>
+                        <th scope="col">Dia i hora</th>
+                        <th scope="col">Ha assistit?</th>
                       </tr>
                     </thead>
                     <tbody>
+
                       <?php
-                      $sql_participants_apuntats = "SELECT * FROM participants_apuntats WHERE id_usuari = " . $usuari;
-                      $result_participants_apuntats = $connexio->query($sql_participants_apuntats);
 
-                      if ($result_participants_apuntats->num_rows > 0) {
-                        $contador = 1;
+                        $sql_participants_apuntats = "SELECT * FROM participants_apuntats WHERE id_usuari = " . $usuari;
+                        $result_participants_apuntats = $connexio->query($sql_participants_apuntats);
 
-                        while ($row_participants_apuntats = $result_participants_apuntats->fetch_assoc()) {
-                          echo "<tr>";
+                        if ($result_participants_apuntats->num_rows > 0) {
+                          $contador = 1;
+                          $dia_ara = date("Y-m-d");
 
-                          $sql_activitats = "SELECT * FROM activitat WHERE dia <= '$dia_avui' AND id = " . $row_participants_apuntats["id_activitat"];
-                          $result_activitats = $connexio->query($sql_activitats);
+                          while ($row_participants_apuntats = $result_participants_apuntats->fetch_assoc()) {
+                            echo "<tr>";
+                              $sql_activitat = "SELECT * FROM activitat WHERE id = " . $row_participants_apuntats["id_activitat"];
+                              $resultat_activitat = $connexio->query($sql_activitat);
 
-                          if ($result_activitats->num_rows > 0) {
-                            while ($row_activitats = $result_activitats->fetch_assoc()) {
-                              echo "<td>" . ($contador++) . "</td>";
+                              if ($resultat_activitat->num_rows > 0) {
+                                while ($row_activitat = $resultat_activitat->fetch_assoc()) {
 
-                              echo "<td>";
-                                echo "<a href='detall_activitat.php?id=" . $row_activitats["id"] . "'>" . $row_activitats["nom"] . "</a>";
-                              echo "</td>";
-
-                              echo "<td>" . $row_activitats["ubicacio"] . "</td>";
-
-                              echo "<td>" . date("d-m-Y", strtotime($row_activitats["dia"])) . "</td>";
-
-                              echo "<td>" . $row_participants_apuntats["numero_participants"] . " persones</td>";
-
-                              echo "<td>";
-                                $sql_creador = "SELECT * FROM usuari WHERE id = " . $row_activitats["id_usuari"];
-                                $result_creador = $connexio->query($sql_creador);
-
-                                if ($result_creador->num_rows > 0) {
-                                  while ($row_creador = $result_creador->fetch_assoc()) {
-                                    echo $row_creador["nom"];
-                                  }
+                                    echo "<td>" . ($contador++) . "</td>";
+                                    if ($dia_ara <= $row_activitat["dia"]) {
+                                      echo "<td style='color: red'>" . $row_activitat["nom"] . " * </td>";
+                                    } else {
+                                      echo "<td>" . $row_activitat["nom"] . "</td>";
+                                    }
+                                    echo "<td>" . $row_activitat["ubicacio"] . "</td>";
+                                    $data_convertida = date("d-m-Y", strtotime($row_activitat["dia"]));
+                                    $hora_convertida = date("g:ia", strtotime($row_activitat["hora"]));
+                                    echo "<td>" . $data_convertida . " " . $hora_convertida . "</td>";
                                 }
-                              echo "</td>";
-
+                              }
                               echo "<td>";
                                 if ($row_participants_apuntats["assistir"] > 0) {
                                   echo "Sí";
@@ -133,35 +125,18 @@
                                   echo "No";
                                 }
                               echo "</td>";
+                            echo "</tr>";
 
-                            }
-
-                          } else {
-                            echo "<td colspan='7'>Cap activitat realitzada anteriorment a data d'avui.</td>";   
                           }
-
-                          echo "</tr>";
                         }
-                      }
+
                       ?>
 
                     </tbody>
                   </table>
-
                 </div>
 
-                <div id="total_activitats">
-                  <?php
-                  $sql_total = "SELECT COUNT(assistir) FROM participants_apuntats WHERE assistir > 0 AND id_usuari= " . $usuari;
-                  $result_total = $connexio->query($sql_total);
 
-                  if ($result_total->num_rows > 0) {
-                    while ($row_total = $result_total->fetch_assoc()) {
-                      echo "<p>Ha assistit: " . $row_total["COUNT(assistir)"] . " activitat/s.</p>";
-                    }
-                  }
-                  ?>
-                </div>
                 <?php
 
               } else {

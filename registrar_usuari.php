@@ -40,8 +40,7 @@
             $connexio_PDO->exec("SET CHARACTER SET utf8");
 
             if ($contrasenya == $contrasenya2) {
-              $sql_afegir_usuari = "INSERT INTO usuari (nom, telefon, email, contrasenya, imatge, es_admin) 
-                                        VALUES (:nom, :telefon, :email, :contrasenya, '-', 0)";
+              $sql_afegir_usuari = "INSERT INTO usuari (nom, telefon, email, contrasenya, imatge, es_admin) VALUES (:nom, :telefon, :email, :contrasenya, '-', 0)";
               $resultat = $connexio_PDO->prepare($sql_afegir_usuari);
 
               $resultat->execute(array(
