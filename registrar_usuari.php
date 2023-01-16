@@ -103,6 +103,17 @@
           </div>
 
           <div class="col-12">
+            <!-- <p>Les dades seran administrades únicament per AILLED</p> -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="accepto" name="accepto" required>
+              <label class="form-check-label" for="accepto">
+                Les dades seran administrades únicament per AILLED. Acceptar condicions.
+                <span class="text-danger">*</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="col-12">
             <input type="submit" class="btn boto_marro" value="Registrar-me" name="enviar">
           </div>
         </form>
